@@ -1,0 +1,41 @@
+#-- Completion --#
+autoload -Uz compinit && compinit
+zstyle ':completion:*' menu select
+
+#-- Git --#
+# ref: https://maimux2x.hatenablog.com/entry/2023/12/23/101355
+autoload -Uz vcs_info
+ setopt prompt_subst
+ zstyle ':vcs_info:git:*' check-for-changes true
+ zstyle ':vcs_info:git:*' stagedstr "%F{magenta}!"
+ zstyle ':vcs_info:git:*' unstagedstr "%F{yellow}+"
+ zstyle ':vcs_info:*' formats "%F{cyan}%c%u[%b]%f"
+ zstyle ':vcs_info:*' actionformats '[%b|%a]'
+ precmd () { vcs_info }
+
+#-- History --#
+# ref: https://qiita.com/neriai/items/916307fc5f74cac6fbcd
+HISTFILE=~/.zsh_history
+SAVEHIST=10000
+setopt hist_no_store
+setopt EXTENDED_HISTORY
+setopt hist_ignore_dups
+setopt hist_ignore_all_dups
+setopt hist_ignore_space
+setopt hist_verify
+setopt hist_reduce_blanks
+setopt hist_save_no_dups
+setopt share_history
+setopt hist_expand
+setopt inc_append_history
+
+#-- Alias --#
+alias ls="ls -G"
+
+#-- Key --#
+bindkey -e
+setopt correct
+
+#-- Prompt --#
+PROMPT='%B%F{blue}%n@%m%f%b: %F{cyan}%~%f $vcs_info_msg_0_
+$ '
