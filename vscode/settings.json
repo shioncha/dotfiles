@@ -1,0 +1,27 @@
+{
+    "git.autofetch": true,
+    "window.nativeTabs": true,
+    "window.autoDetectColorScheme": true,
+    "editor.inlineSuggest.enabled": true,
+    "editor.fontFamily": "'HackGen Console NF','UDEV Gothic JPDOC','UDEV Gothic',Menlo, Monaco, 'Courier New', monospace",
+    "liveServer.settings.NoBrowser": true,
+    "workbench.layoutControl.enabled": false,
+    "editor.minimap.enabled": false,
+    "json.schemaDownload.enable": false,
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    "[c]": {
+        "editor.defaultFormatter": "ms-vscode.cpptools"
+    },
+    "workbench.colorTheme": "Solarized Light",
+    "workbench.activityBar.location": "top",
+    "workbench.colorCustomizations": {
+        "editorIndentGuide.background1": "#0000ff",
+        "editorIndentGuide.background2": "#89d6ff",
+        "editorIndentGuide.background3": "#57ffff",
+        "editorIndentGuide.activeBackground1": "#FFFFFF",
+        "editorIndentGuide.activeBackground2": "#ffffff",
+        "editorIndentGuide.activeBackground3": "#ffffff"
+    }
+}
