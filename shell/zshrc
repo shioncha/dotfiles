@@ -1,6 +1,8 @@
 #-- Completion --#
+fpath=(~/.zsh/zsh-completions/src $fpath)
 autoload -Uz compinit && compinit -C
 zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 #-- History --#
 # ref: https://qiita.com/neriai/items/916307fc5f74cac6fbcd
@@ -25,6 +27,9 @@ if [[ "$OSTYPE" == *darwin* ]]; then
 elif [[ "$OSTYPE" == *linux* ]]; then
   alias ls="ls --color=auto"
 fi
+mkcd() {
+  mkdir -p "$1" && cd "$1"
+}
 
 #-- Navigation --#
 setopt auto_cd
@@ -44,16 +49,23 @@ else
   autoload -Uz vcs_info
   setopt prompt_subst
   zstyle ':vcs_info:git:*' check-for-changes true
-  zstyle ':vcs_info:git:*' stagedstr "%F{magenta}!"
-  zstyle ':vcs_info:git:*' unstagedstr "%F{yellow}+"
-  zstyle ':vcs_info:*' formats "%F{cyan}%c%u[%b]%f"
-  zstyle ':vcs_info:*' actionformats '[%b|%a]'
+  zstyle ':vcs_info:git:*' stagedstr "%F{magenta}!%f"
+  zstyle ':vcs_info:git:*' unstagedstr "%F{yellow}+%f"
+  zstyle ':vcs_info:*' formats "%c%u%F{cyan}[%b]%f"
+  zstyle ':vcs_info:*' actionformats '%c%u%F{red}[%b|%a]%f'
   precmd () { vcs_info }
 
-  PROMPT='%B%F{blue}%n@%m%f%b: %F{cyan}%~%f $vcs_info_msg_0_
-$ '
+  PROMPT='
+%(?.%F{green}.%F{red})╭─%f %B%F{blue}%n@%m%f%b: %F{cyan}%~%f $vcs_info_msg_0_
+%(?.%F{green}.%F{red})╰─%f %# '
+  RPROMPT="[%T]"
 fi
 
 #-- Package --#
+[[ -f "$HOME/.fzf.zsh" ]] && source ~/.fzf.zsh
 [[ -d "$HOME/.zsh/zsh-autosuggestions" ]] && source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 [[ -d "$HOME/.zsh/zsh-syntax-highlighting" ]] && source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+#-- Path --#
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$HOME/.local/bin:$PATH"
