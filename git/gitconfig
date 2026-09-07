@@ -1,0 +1,13 @@
+[user]
+	name = shioncha
+	email = 57836246+shioncha@users.noreply.github.com
+	signingKey = C847109C4B2E53ED79FD28C3BA2A8D6E5E009123
+
+[commit]
+	gpgsign = true
+
+[init]
+	defaultBranch = main
+
+[core]
+	autocrlf = input
