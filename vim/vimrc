@@ -1,0 +1,53 @@
+" ref: https://zenn.dev/meantix/articles/051c912ed8b582
+
+" ====================
+" 表示
+" ====================
+" シンタックスハイライトを有効にする
+syntax on
+
+" タイトルを表示する
+set title
+
+" 行番号を表示する
+set number
+set relativenumber
+
+" 現在の行をハイライトする
+set cursorline
+
+" タブの幅をスペース4つ分に設定
+set tabstop=4
+
+" オートインデントの幅をスペース4つ分に設定
+set shiftwidth=4
+
+" タブをスペースに変換する
+set expandtab
+
+" オートインデントを有効にする
+set autoindent
+
+" ====================
+" 検索
+" ====================
+" 検索時に大文字・小文字を区別しない
+set ignorecase
+
+" ただし、検索文字列に大文字が含まれている場合は区別する
+set smartcase
+
+" 検索結果をハイライト表示する
+set hlsearch
+
+" 検索時、ファイルの末尾まで行ったら先頭に戻る
+set wrapscan
+
+" ====================
+" キーバインド
+" ====================
+" ノーマルモードでjjと入力したらEscキーと同じ動作にする
+inoremap jj <Esc>
+
+" F5キーで.vimrcを再読み込みする
+nnoremap <F5> :source $MYVIMRC<CR>
